@@ -33,6 +33,9 @@
 
 const API_BASE = 'http://localhost:3000';
 
+// Change this from localhost to your REAL Render link
+export const API_BASE = 'https://claras-best.onrender.com'; 
+
 // ── LOGIN  →  hits POST /login in your server.js ─────────────
 export async function apiLogin(email: string, password: string) {
   const res = await fetch(`${API_BASE}/login`, {
