@@ -17,7 +17,8 @@ const PORT = process.env.PORT || 3000;
 
 // 1. MIDDLEWARE
 app.use(express.json());
-app.use(cors()); // Allows your React app to talk to this server
+// CORS updated to be more compatible with Render deployments
+app.use(cors()); 
 
 // 2. DATABASE CONNECTION
 const db = mysql.createConnection({
@@ -41,6 +42,15 @@ db.connect((err) => {
 });
 
 // 3. ROUTES
+
+// NEW: Root route to fix "Cannot GET /"
+app.get('/', (req, res) => {
+    res.json({
+        message: "Clara's Best API is Live!",
+        status: "Online",
+        database: "Connected to Aiven MySQL"
+    });
+});
 
 // Login Route
 app.post('/login', (req, res) => {
