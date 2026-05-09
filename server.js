@@ -111,6 +111,10 @@ app.post('/api/update-order', (req, res) => {
     });
 });
 
+app.use(cors({
+    origin: 'https://claras-best.onrender.com' // Replace with your Frontend URL
+}));
+
 app.listen(PORT, () => {
     console.log(`🚀 Server active at port ${PORT}`);
 });
