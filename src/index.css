@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Print Styles for Reports */
+@media print {
+  .no-print,
+  button,
+  nav,
+  #sidebar,
+  .logout-btn {
+    display: none !important;
+  }
+  
+  body {
+    background-color: white !important;
+  }
+  
+  .content-card,
+  .bg-white {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+  
+  #main-content,
+  .ml-64 {
+    margin-left: 0 !important;
+  }
+  
+  .max-w-6xl,
+  .max-w-7xl {
+    max-width: 100% !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #630330;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #800440;
+}
+
+/* Focus styles for accessibility */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #D4AF37;
+}
+
+/* Animation for cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-card {
+  animation: fadeIn 0.3s ease-out;
+}
