@@ -34,7 +34,7 @@
 const API_BASE = 'http://localhost:3000';
 
 // Replace with your actual Backend URL from Render
-export const API_BASE = 'https://claras-backend.onrender.com'; 
+export const API_BASE = 'https://claras-best.onrender.com'; 
 
 // ── LOGIN  →  hits POST /login in your server.js ─────────────
 export async function apiLogin(email: string, password: string) {
