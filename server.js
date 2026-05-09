@@ -1,11 +1,16 @@
 // ╔══════════════════════════════════════════════════════════════╗
 // ║ VS CODE LOCATION: CLARASBEST / server.js                     ║
 // ╚══════════════════════════════════════════════════════════════╝
-const express = require('express');
-const mysql = require('mysql2');
-const fs = require('fs');
-const path = require('path');
-const cors = require('cors');
+import express from 'express';
+import mysql from 'mysql2';
+import fs from 'fs';
+import path from 'path';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+
+// Fix for __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,7 +20,6 @@ app.use(express.json());
 app.use(cors()); // Allows your React app to talk to this server
 
 // 2. DATABASE CONNECTION
-// On Render, we use environment variables. Locally, it uses your Aiven strings.
 const db = mysql.createConnection({
     host: process.env.DB_HOST || 'mysql-38880adb-janine-batle10.e.aivencloud.com', 
     port: process.env.DB_PORT || 12590,
@@ -96,7 +100,6 @@ app.post('/api/update-order', (req, res) => {
         res.json({ success: true, message: 'Status updated' });
     });
 });
-
 
 app.listen(PORT, () => {
     console.log(`🚀 Server active at port ${PORT}`);
