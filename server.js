@@ -112,7 +112,7 @@ app.post('/api/update-order', (req, res) => {
 });
 
 app.use(cors({
-    origin: 'https://claras-best.onrender.com' // Replace with your Frontend URL
+    origin: 'https://claras-best-frontend.onrender.com' // Use the NEW URL from Step 1
 }));
 
 app.listen(PORT, () => {
