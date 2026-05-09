@@ -17,8 +17,13 @@ const PORT = process.env.PORT || 3000;
 
 // 1. MIDDLEWARE
 app.use(express.json());
-// CORS updated to be more compatible with Render deployments
-app.use(cors()); 
+
+// CORS Configuration: Update the origin to your actual Frontend URL
+app.use(cors({
+    origin: ['https://claras-best-frontend.onrender.com', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
+}));
 
 // 2. DATABASE CONNECTION
 const db = mysql.createConnection({
@@ -43,7 +48,7 @@ db.connect((err) => {
 
 // 3. ROUTES
 
-// NEW: Root route to fix "Cannot GET /"
+// Root route to fix "Cannot GET /"
 app.get('/', (req, res) => {
     res.json({
         message: "Clara's Best API is Live!",
@@ -110,10 +115,6 @@ app.post('/api/update-order', (req, res) => {
         res.json({ success: true, message: 'Status updated' });
     });
 });
-
-app.use(cors({
-    origin: 'https://claras-best-frontend.onrender.com' // Use the NEW URL from Step 1
-}));
 
 app.listen(PORT, () => {
     console.log(`🚀 Server active at port ${PORT}`);
