@@ -193,19 +193,7 @@ export default function Login({ onLogin }: LoginProps) {
             </button>
           </form>
 
-          {/* ── Demo credentials hint ─────────────────────────── */}
-          <div className="mt-5 p-4 rounded-xl text-xs" style={{ backgroundColor: '#FDF5E6' }}>
-            <p className="font-bold mb-2" style={{ color: '#630330' }}>
-              Demo Credentials (when server.js is offline):
-            </p>
-            <div className="space-y-1 text-gray-600">
-              <p>• admin@clarasbest.com / admin123</p>
-              <p>• staff@clarasbest.com / staff123</p>
-              <p>• janine@email.com / customer123</p>
-            </div>
-          </div>
-
-          {/* ── Divider ───────────────────────────────────────── */}
+          
           <div className="my-5 flex items-center gap-3">
             <div className="flex-1 border-t border-gray-200" />
             <span className="text-xs text-gray-400">Register New Account</span>
