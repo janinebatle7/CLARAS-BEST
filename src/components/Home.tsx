@@ -74,19 +74,25 @@ const Home: React.FC = () => {
           </div>
         </div>
         
-        {/* Visual Showcase */}
+        {/* Visual Showcase - CIRCLE WITH PICTURE */}
         <div className="lg:w-1/2 relative flex justify-center">
-          <div className="absolute inset-0 bg-[#801B1B]/5 rounded-full blur-3xl transform scale-125"></div>
-          <div className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] rounded-full border-[20px] border-white shadow-2xl overflow-hidden group">
+          {/* Background Glow */}
+          <div className="absolute inset-0 bg-[#801B1B]/10 rounded-full blur-3xl transform scale-110"></div>
+          
+          {/* The Circular Image Frame */}
+          <div className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] rounded-full border-[16px] border-white shadow-2xl overflow-hidden group ring-1 ring-black/5">
             <img 
               src="/hero-kakanin-plate.jpg" 
               alt="Premium Kakanin Plate" 
-              className="object-cover w-full h-full transform transition-transform duration-[3s] group-hover:scale-110" 
+              className="w-full h-full object-cover transform transition-transform duration-[4s] ease-out group-hover:scale-110" 
             />
+            {/* Overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#331818]/20 to-transparent pointer-events-none"></div>
           </div>
-          {/* Floating Badges */}
-          <div className="absolute top-10 right-10 bg-white p-4 rounded-2xl shadow-2xl animate-bounce">
-            <span className="text-2xl">🧡</span>
+
+          {/* Floating Interactive Badge */}
+          <div className="absolute top-8 right-8 bg-white p-4 rounded-3xl shadow-2xl animate-bounce flex items-center justify-center border border-gray-50">
+            <span className="text-3xl">🧡</span>
           </div>
         </div>
       </section>
@@ -125,7 +131,7 @@ const Home: React.FC = () => {
           {products.map((item, index) => (
             <div key={index} className="group relative bg-white rounded-[2.5rem] p-4 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4">
               <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
-                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-[#801B1B]/10">
                   <span className="text-[9px] font-black uppercase text-[#801B1B] tracking-widest">{item.tag}</span>
                 </div>
                 <img 
