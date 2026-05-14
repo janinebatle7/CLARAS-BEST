@@ -6,121 +6,142 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const products = [
-    { name: "Bibingka", price: "P120.00", image: "/bibingka.jpg" },
-    { name: "Puto", price: "P100.00", image: "/puto.jpg" },
-    { name: "Kutsinta", price: "P100.00", image: "/kutsinta.jpg" },
-    { name: "Sapin-Sapin", price: "P120.00", image: "/sapin-sapin.jpg" },
-    { name: "Suman", price: "P90.00", image: "/suman.jpg" },
+    { name: "Bibingka", price: "P120.00", image: "/bibingka.jpg", tag: "Best Seller" },
+    { name: "Puto", price: "P100.00", image: "/puto.jpg", tag: "Classic" },
+    { name: "Kutsinta", price: "P100.00", image: "/kutsinta.jpg", tag: "Classic" },
+    { name: "Sapin-Sapin", price: "P120.00", image: "/sapin-sapin.jpg", tag: "Top Rated" },
+    { name: "Suman", price: "P90.00", image: "/suman.jpg", tag: "Traditional" },
   ];
 
   return (
-    <div className="bg-[#FCF8F1] min-h-screen font-sans text-[#4A0E0E]">
-      {/* Header / Navigation Bar */}
-      <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#801B1B] rounded-full flex items-center justify-center text-white font-bold text-xl">C</div>
-            <span className="font-serif font-bold text-xl tracking-tight uppercase text-[#801B1B]">Clara's Best</span>
+    <div className="bg-[#FCF8F1] min-h-screen font-sans text-[#331818] selection:bg-[#801B1B] selection:text-white">
+      {/* Dynamic Header */}
+      <header className="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-[#801B1B]/10">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-[#801B1B] rounded-full flex items-center justify-center text-[#FCF8F1] font-bold text-2xl shadow-lg ring-4 ring-[#801B1B]/20">C</div>
+            <div className="flex flex-col">
+              <span className="font-serif font-black text-xl leading-none uppercase tracking-tighter text-[#801B1B]">Clara's Best</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">Premium Kakanin</span>
+            </div>
           </div>
           
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
-            <button onClick={() => navigate('/')} className="hover:text-[#801B1B] transition">Home</button>
-            <button className="hover:text-[#801B1B] transition">Kakanin Menu</button>
-            <button className="hover:text-[#801B1B] transition">About Us</button>
-            <button className="hover:text-[#801B1B] transition">Contact Us</button>
+          <nav className="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.15em]">
+            {['Home', 'Kakanin Menu', 'About Us', 'Contact Us'].map((item) => (
+              <button 
+                key={item}
+                onClick={() => item === 'Home' && navigate('/')}
+                className="hover:text-[#801B1B] transition-colors relative group"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#801B1B] transition-all group-hover:w-full"></span>
+              </button>
+            ))}
           </nav>
 
-          {/* Login Button Feature */}
           <button 
             onClick={() => navigate('/login')}
-            className="bg-[#801B1B] text-white px-5 py-2 rounded-md text-sm font-bold flex items-center gap-2 hover:bg-black transition shadow-lg"
+            className="bg-[#801B1B] text-white px-6 py-2.5 rounded-full text-xs font-black flex items-center gap-2 hover:bg-[#331818] hover:scale-105 transition-all shadow-xl active:scale-95"
           >
-            <span className="text-lg">👤</span> LOGIN
+            <span className="text-base">👤</span> LOGIN
           </button>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-8 py-20 max-w-7xl mx-auto">
-        <div className="md:w-1/2 space-y-8">
-          <h1 className="text-6xl font-serif italic text-[#801B1B] leading-tight">
-            Authentic Pinoy Kakanin Delicacies, <br />
-            <span className="block not-italic font-bold text-black mt-2">Made with Love ♡</span>
+      {/* Elegant Hero Section */}
+      <section className="relative overflow-hidden px-6 py-20 lg:py-32 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        <div className="lg:w-1/2 space-y-10 z-10 text-center lg:text-left">
+          <div className="inline-block px-4 py-1.5 bg-[#801B1B]/10 rounded-full">
+            <span className="text-[#801B1B] text-[10px] font-black uppercase tracking-[0.2em]">✨ 100% Homemade & Fresh</span>
+          </div>
+          <h1 className="text-6xl lg:text-8xl font-serif italic text-[#331818] leading-[0.9] tracking-tighter">
+            Authentic <br />
+            <span className="not-italic font-black text-[#801B1B] drop-shadow-sm">Pinoy Heart</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-md">
-            Enjoy your favorite Filipino rice delicacies. Freshly made, traditionally loved.
+          <p className="text-lg lg:text-xl text-gray-600 max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">
+            Handcrafted rice delicacies made with traditional recipes passed down through generations.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button 
               onClick={() => navigate('/login')}
-              className="bg-[#801B1B] text-white px-8 py-4 rounded-md font-bold flex items-center gap-2 hover:bg-black transition transform hover:-translate-y-1"
+              className="bg-[#801B1B] text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#331818] transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0"
             >
               ORDER NOW 🛍️
             </button>
-            <button className="border-2 border-[#801B1B] text-[#801B1B] px-8 py-4 rounded-md font-bold hover:bg-[#801B1B] hover:text-white transition">
-              BOOK RESERVATION 🗓️
+            <button className="bg-white border-2 border-[#801B1B]/20 text-[#801B1B] px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:border-[#801B1B] transition-all">
+              RESERVATIONS 🗓️
             </button>
           </div>
         </div>
         
-        {/* Main Image Plate */}
-        <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
-          <div className="relative w-96 h-96 rounded-full border-[12px] border-[#801B1B]/10 overflow-hidden shadow-2xl animate-fade-in">
+        {/* Visual Showcase */}
+        <div className="lg:w-1/2 relative flex justify-center">
+          <div className="absolute inset-0 bg-[#801B1B]/5 rounded-full blur-3xl transform scale-125"></div>
+          <div className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] rounded-full border-[20px] border-white shadow-2xl overflow-hidden group">
             <img 
               src="/hero-kakanin-plate.jpg" 
-              alt="Kakanin Selection" 
-              className="object-cover w-full h-full hover:scale-110 transition duration-700" 
+              alt="Premium Kakanin Plate" 
+              className="object-cover w-full h-full transform transition-transform duration-[3s] group-hover:scale-110" 
             />
+          </div>
+          {/* Floating Badges */}
+          <div className="absolute top-10 right-10 bg-white p-4 rounded-2xl shadow-2xl animate-bounce">
+            <span className="text-2xl">🧡</span>
           </div>
         </div>
       </section>
 
-      {/* Feature Icons */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-16 border-y border-gray-100 bg-white">
-        {[
-          { label: "WIDE SELECTION", desc: "Choose from a variety of traditional kakanin.", icon: "🛍️" },
-          { label: "FRESH & QUALITY", desc: "Made with premium ingredients for the best taste.", icon: "✨" },
-          { label: "EASY ORDERING", desc: "Walk-in or reservation ordering made simple.", icon: "🚚" },
-          { label: "ORDER TRACKING", desc: "Track your orders in real-time with ease.", icon: "📍" },
-        ].map((feature, i) => (
-          <div key={i} className="text-center space-y-3">
-            <div className="text-4xl">{feature.icon}</div>
-            <h3 className="font-bold text-sm uppercase tracking-widest">{feature.label}</h3>
-            <p className="text-xs text-gray-500 px-6 leading-relaxed">{feature.desc}</p>
-          </div>
-        ))}
+      {/* Trust & Features Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {[
+            { label: "WIDE SELECTION", desc: "Over 20+ varieties of traditional kakanin treats.", icon: "🍱" },
+            { label: "FRESH & QUALITY", desc: "Cooked daily using the finest glutinous rice.", icon: "🌾" },
+            { label: "EASY ORDERING", desc: "Seamless checkout for your local cravings.", icon: "📲" },
+            { label: "FAST DELIVERY", desc: "Warm and fresh kakanin right at your door.", icon: "🛵" },
+          ].map((feature, i) => (
+            <div key={i} className="text-center group p-6 hover:bg-[#FCF8F1] rounded-3xl transition-colors">
+              <div className="text-5xl mb-6 transform transition-transform group-hover:scale-110 group-hover:rotate-6">{feature.icon}</div>
+              <h3 className="font-black text-xs uppercase tracking-[0.2em] mb-3 text-[#801B1B]">{feature.label}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed font-medium">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Best Sellers Section */}
-      <section className="px-8 py-20 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <span className="italic text-[#801B1B] font-serif text-lg">Our Best Sellers 🌿</span>
-            <h2 className="text-4xl font-bold mt-2">Favorite Kakanin</h2>
+      {/* Curated Menu Section */}
+      <section className="px-6 py-24 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
+          <div className="text-center md:text-left">
+            <span className="italic text-[#801B1B] font-serif text-2xl">Chef's Recommendations 🌿</span>
+            <h2 className="text-5xl font-black tracking-tighter mt-2 uppercase">The Signature Collection</h2>
           </div>
-          <button className="text-[#801B1B] font-bold border-b-2 border-[#801B1B] pb-1 hover:text-black hover:border-black transition">
-            VIEW ALL MENU
+          <button className="px-8 py-3 bg-white border-2 border-[#801B1B] text-[#801B1B] rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#801B1B] hover:text-white transition-all">
+            EXPLORE ALL MENU
           </button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {products.map((item, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition duration-300">
-              <div className="h-48 bg-gray-50 overflow-hidden">
+            <div key={index} className="group relative bg-white rounded-[2.5rem] p-4 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4">
+              <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
+                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                  <span className="text-[9px] font-black uppercase text-[#801B1B] tracking-widest">{item.tag}</span>
+                </div>
                 <img 
                   src={item.image} 
                   alt={item.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125" 
                 />
               </div>
-              <div className="p-5 text-center space-y-3">
-                <h4 className="font-bold text-lg">{item.name}</h4>
-                <p className="text-[#801B1B] font-bold text-xl">{item.price}</p>
+              <div className="text-center px-2 space-y-2">
+                <h4 className="font-black text-lg uppercase tracking-tight">{item.name}</h4>
+                <p className="text-[#801B1B] font-black text-xl mb-4 italic">{item.price}</p>
                 <button 
                   onClick={() => navigate('/login')}
-                  className="w-full bg-[#801B1B] text-white py-3 rounded-lg text-xs font-black uppercase tracking-tighter hover:bg-black transition"
+                  className="w-full bg-[#331818] text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#801B1B] transition-all shadow-lg active:scale-95"
                 >
-                  ADD TO CART
+                  ADD TO BASKET
                 </button>
               </div>
             </div>
@@ -128,36 +149,43 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer Info */}
-      <footer className="bg-[#1A1A1A] text-gray-400 py-16 px-8 text-sm">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="space-y-4">
-            <h5 className="text-white font-bold uppercase tracking-widest">Store Hours</h5>
-            <div className="space-y-1">
-              <p>Monday - Sunday</p>
-              <p className="text-white font-semibold">8:00 AM - 8:00 PM</p>
+      {/* Footer (Dark Mode) */}
+      <footer className="bg-[#1A1A1A] text-gray-400 py-24 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#801B1B] rounded-full flex items-center justify-center text-white font-bold">C</div>
+              <span className="text-white font-serif font-black text-xl uppercase tracking-tighter">Clara's Best</span>
+            </div>
+            <p className="text-sm leading-relaxed">The heart of SJDM's traditional rice cakes. Bringing families together through sweet, sticky delicacies.</p>
+          </div>
+          
+          <div className="space-y-8">
+            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Hours</h5>
+            <div className="text-sm space-y-2">
+              <p>Mon — Sun</p>
+              <p className="text-[#801B1B] font-bold text-lg">08:00 AM — 08:00 PM</p>
             </div>
           </div>
-          <div className="space-y-4">
-            <h5 className="text-white font-bold uppercase tracking-widest">Location</h5>
-            <p className="leading-relaxed">Poblacion, City of San Jose del Monte, Bulacan</p>
-          </div>
-          <div className="space-y-4">
-            <h5 className="text-white font-bold uppercase tracking-widest">Contact Us</h5>
-            <div className="space-y-1">
-              <p>📞 0923 456 7890</p>
-              <p>📧 clarasbest.kakanin@gmail.com</p>
+
+          <div className="space-y-8">
+            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Reach Us</h5>
+            <div className="text-sm space-y-4">
+              <p className="flex items-center gap-3 italic">📍 SJDM, Bulacan</p>
+              <p className="flex items-center gap-3 font-bold text-white tracking-widest">📞 0923 456 7890</p>
             </div>
           </div>
-          <div className="space-y-4">
-            <h5 className="text-white font-bold uppercase tracking-widest">Follow Us</h5>
-            <div className="flex gap-4 text-2xl">
-              <button className="hover:text-white transition">facebook</button>
+
+          <div className="space-y-8">
+            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Social</h5>
+            <div className="flex gap-6">
+              <button className="w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center hover:bg-[#801B1B] hover:border-[#801B1B] transition-all">FB</button>
+              <button className="w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center hover:bg-[#801B1B] hover:border-[#801B1B] transition-all">IG</button>
             </div>
           </div>
         </div>
-        <div className="text-center mt-16 border-t border-white/10 pt-8 text-xs tracking-widest opacity-50">
-          © 2025 CLARA'S BEST KAKANIN DELICACIES. ALL RIGHTS RESERVED.
+        <div className="text-center mt-24 border-t border-white/5 pt-10 text-[10px] font-bold tracking-[0.4em] uppercase opacity-30">
+          © 2025 CLARA'S BEST KAKANIN — TRADITION BORN IN BULACAN
         </div>
       </footer>
     </div>
