@@ -64,7 +64,7 @@ const Home: React.FC = () => {
         </div>
         <div className="lg:w-1/2 relative">
           <div className="rounded-full overflow-hidden border-[12px] border-[#FAF7F2] shadow-2xl">
-            <img src="/hero-plate.jpg" alt="Kakanin Plate" className="w-full h-auto" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Aipl1JQWr_3xXGSCT5hfefpv2PlkW0__kg&s" alt="Kakanin Plate" className="w-full h-auto" />
           </div>
         </div>
       </section>
