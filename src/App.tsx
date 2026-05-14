@@ -1,35 +1,10 @@
 // ================================================================
-// 📁 LOCATION IN YOUR VS CODE:
-//
-//  CLARASBEST
-//  ├── node_modules
-//  ├── public
-//  │    ├── admin_dashboard.html
-//  │    ├── app.js                 ← NOT this file
-//  │    ├── customer_home.html
-//  │    ├── index.html
-//  │    ├── staff_dashboard.html
-//  │    └── style.css
-//  ├── ca.pem
-//  ├── clarasdb.sql
-//  ├── package-lock.json
-//  ├── package.json
-//  └── server.js
-//
-//  ⚠️  The app.js inside /public is your OLD vanilla JS file.
-//  ⚠️  THIS App.tsx is a DIFFERENT file in your React project.
-//
-//  👉 In your REACT PROJECT folder, find the file:
-//       src / App.tsx
-//  👉 OPEN it and REPLACE everything inside with this code.
-//
-//  WHAT THIS FILE DOES:
-//  This is the React router. It decides which dashboard to show
-//  based on the logged-in user's role (Admin/Staff/Customer).
+// 📁 LOCATION IN YOUR VS CODE: src / App.tsx
 // ================================================================
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Home from './components/Home'; // Your new landing page
 import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
 import CustomerDashboard from './components/CustomerDashboard';
@@ -64,8 +39,12 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* NEW FEATURE: Landing Page as the default view */}
+        <Route path="/" element={<Home />} />
+
+        {/* AUTH FEATURE: Login handles redirection based on role */}
         <Route
-          path="/"
+          path="/login"
           element={
             user ? (
               <Navigate to={`/${user.role.toLowerCase()}`} replace />
@@ -74,33 +53,39 @@ function App() {
             )
           }
         />
+
+        {/* ADMIN DASHBOARD ROUTE */}
         <Route
           path="/admin"
           element={
             user?.role === 'Admin' ? (
               <AdminDashboard user={user} onLogout={handleLogout} />
             ) : (
-              <Navigate to="/" replace />
+              <Navigate to="/login" replace />
             )
           }
         />
+
+        {/* CUSTOMER DASHBOARD ROUTE */}
         <Route
           path="/customer"
           element={
             user?.role === 'Customer' ? (
               <CustomerDashboard user={user} onLogout={handleLogout} />
             ) : (
-              <Navigate to="/" replace />
+              <Navigate to="/login" replace />
             )
           }
         />
+
+        {/* STAFF DASHBOARD ROUTE */}
         <Route
           path="/staff"
           element={
             user?.role === 'Staff' ? (
               <StaffDashboard user={user} onLogout={handleLogout} />
             ) : (
-              <Navigate to="/" replace />
+              <Navigate to="/login" replace />
             )
           }
         />
