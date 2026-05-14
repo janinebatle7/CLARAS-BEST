@@ -1,153 +1,113 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { cn } from '../utils/cn';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const products = [
-    { name: "Bibingka", price: "P120.00", image: "/bibingka.jpg", tag: "Best Seller" },
-    { name: "Puto", price: "P100.00", image: "/puto.jpg", tag: "Classic" },
-    { name: "Kutsinta", price: "P100.00", image: "/kutsinta.jpg", tag: "Classic" },
-    { name: "Sapin-Sapin", price: "P120.00", image: "/sapin-sapin.jpg", tag: "Top Rated" },
-    { name: "Suman", price: "P90.00", image: "/suman.jpg", tag: "Traditional" },
+    { name: "Bibingka", price: "P120.00", image: "/bibingka.jpg" },
+    { name: "Puto", price: "P100.00", image: "/puto.jpg" },
+    { name: "Kutsinta", price: "P100.00", image: "/kutsinta.jpg" },
+    { name: "Sapin-Sapin", price: "P120.00", image: "/sapin-sapin.jpg" },
+    { name: "Suman", price: "P90.00", image: "/suman.jpg" },
   ];
 
   return (
-    <div className="bg-[#FCF8F1] min-h-screen font-sans text-[#331818] selection:bg-[#801B1B] selection:text-white">
-      {/* Dynamic Header */}
-      <header className="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-[#801B1B]/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-[#801B1B] rounded-full flex items-center justify-center text-[#FCF8F1] font-bold text-2xl shadow-lg ring-4 ring-[#801B1B]/20">C</div>
+    <div className="bg-[#FAF7F2] min-h-screen font-sans text-[#4A1D1F]">
+      {/* Header matching photo_6060131342525075399_y_2.jpg */}
+      <header className="bg-white border-b border-gray-100 py-4 px-8 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <img src="/logo.png" alt="Clara's Best Logo" className="h-10 w-auto" />
             <div className="flex flex-col">
-              <span className="font-serif font-black text-xl leading-none uppercase tracking-tighter text-[#801B1B]">Clara's Best</span>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">Premium Kakanin</span>
+              <span className="font-serif font-bold text-[#801B1B] text-lg leading-tight uppercase">Clara's Best</span>
+              <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Kakanin Delicacies</span>
             </div>
           </div>
           
-          <nav className="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.15em]">
-            {['Home', 'Kakanin Menu', 'About Us', 'Contact Us'].map((item) => (
-              <button 
-                key={item}
-                onClick={() => item === 'Home' && navigate('/')}
-                className="hover:text-[#801B1B] transition-colors relative group"
-              >
+          <nav className="hidden lg:flex items-center gap-8 text-xs font-bold text-gray-700">
+            {['Home', 'Kakanin Menu', 'Order Now', 'Reservations', 'Track Order', 'About Us', 'Contact Us'].map((item) => (
+              <button key={item} className="hover:text-[#801B1B] transition-colors relative border-b-2 border-transparent hover:border-[#801B1B] pb-1">
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#801B1B] transition-all group-hover:w-full"></span>
               </button>
             ))}
           </nav>
 
           <button 
             onClick={() => navigate('/login')}
-            className="bg-[#801B1B] text-white px-6 py-2.5 rounded-full text-xs font-black flex items-center gap-2 hover:bg-[#331818] hover:scale-105 transition-all shadow-xl active:scale-95"
+            className="bg-[#801B1B] text-white px-5 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-[#601414] transition-all"
           >
-            <span className="text-base">👤</span> LOGIN
+            <span className="text-sm">👤</span> Login
           </button>
         </div>
       </header>
 
-      {/* Elegant Hero Section */}
-      <section className="relative overflow-hidden px-6 py-20 lg:py-32 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-        <div className="lg:w-1/2 space-y-10 z-10 text-center lg:text-left">
-          <div className="inline-block px-4 py-1.5 bg-[#801B1B]/10 rounded-full">
-            <span className="text-[#801B1B] text-[10px] font-black uppercase tracking-[0.2em]">✨ 100% Homemade & Fresh</span>
-          </div>
-          <h1 className="text-6xl lg:text-8xl font-serif italic text-[#331818] leading-[0.9] tracking-tighter">
-            Authentic <br />
-            <span className="not-italic font-black text-[#801B1B] drop-shadow-sm">Pinoy Heart</span>
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-8 py-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="lg:w-1/2 space-y-6">
+          <h1 className="text-5xl lg:text-6xl font-serif font-bold text-[#801B1B] leading-tight">
+            Authentic Pinoy <br />
+            Kakanin Delicacies, <br />
+            <span className="italic font-serif font-normal text-[#D4A373]">Made with Love ♡</span>
           </h1>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">
-            Handcrafted rice delicacies made with traditional recipes passed down through generations.
+          <p className="text-gray-600 text-lg max-w-md">
+            Enjoy your favorite Filipino rice delicacies. Freshly made, traditionally loved.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button 
-              onClick={() => navigate('/login')}
-              className="bg-[#801B1B] text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#331818] transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0"
-            >
+          <div className="flex gap-4">
+            <button className="bg-[#801B1B] text-white px-8 py-3 rounded-md font-bold text-sm flex items-center gap-2 shadow-lg">
               ORDER NOW 🛍️
             </button>
-            <button className="bg-white border-2 border-[#801B1B]/20 text-[#801B1B] px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:border-[#801B1B] transition-all">
-              RESERVATIONS 🗓️
+            <button className="bg-white border-2 border-[#801B1B] text-[#801B1B] px-6 py-3 rounded-md font-bold text-sm flex items-center gap-2">
+              BOOK RESERVATION 🗓️
             </button>
           </div>
         </div>
-        
-        {/* Visual Showcase - CIRCLE WITH PICTURE */}
-        <div className="lg:w-1/2 relative flex justify-center">
-          {/* Background Glow */}
-          <div className="absolute inset-0 bg-[#801B1B]/10 rounded-full blur-3xl transform scale-110"></div>
-          
-          {/* The Circular Image Frame */}
-          <div className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] rounded-full border-[16px] border-white shadow-2xl overflow-hidden group ring-1 ring-black/5">
-            <img 
-              src="/hero-kakanin-plate.jpg" 
-              alt="Premium Kakanin Plate" 
-              className="w-full h-full object-cover transform transition-transform duration-[4s] ease-out group-hover:scale-110" 
-            />
-            {/* Overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#331818]/20 to-transparent pointer-events-none"></div>
-          </div>
-
-          {/* Floating Interactive Badge */}
-          <div className="absolute top-8 right-8 bg-white p-4 rounded-3xl shadow-2xl animate-bounce flex items-center justify-center border border-gray-50">
-            <span className="text-3xl">🧡</span>
+        <div className="lg:w-1/2 relative">
+          <div className="rounded-full overflow-hidden border-[12px] border-[#FAF7F2] shadow-2xl">
+            <img src="/hero-plate.jpg" alt="Kakanin Plate" className="w-full h-auto" />
           </div>
         </div>
       </section>
 
-      {/* Trust & Features Section */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      {/* Feature Section matching photo_6060131342525075399_y_2.jpg */}
+      <section className="bg-[#FDFBF7] py-16 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { label: "WIDE SELECTION", desc: "Over 20+ varieties of traditional kakanin treats.", icon: "🍱" },
-            { label: "FRESH & QUALITY", desc: "Cooked daily using the finest glutinous rice.", icon: "🌾" },
-            { label: "EASY ORDERING", desc: "Seamless checkout for your local cravings.", icon: "📲" },
-            { label: "FAST DELIVERY", desc: "Warm and fresh kakanin right at your door.", icon: "🛵" },
-          ].map((feature, i) => (
-            <div key={i} className="text-center group p-6 hover:bg-[#FCF8F1] rounded-3xl transition-colors">
-              <div className="text-5xl mb-6 transform transition-transform group-hover:scale-110 group-hover:rotate-6">{feature.icon}</div>
-              <h3 className="font-black text-xs uppercase tracking-[0.2em] mb-3 text-[#801B1B]">{feature.label}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed font-medium">{feature.desc}</p>
+            { label: "WIDE SELECTION", desc: "Choose from a variety of traditional kakanin.", icon: "🛍️" },
+            { label: "FRESH & QUALITY", desc: "Made with premium ingredients for the best taste.", icon: "✅" },
+            { label: "EASY ORDERING", desc: "Walk-in or reservation ordering made simple.", icon: "🚛" },
+            { label: "ORDER TRACKING", desc: "Track your orders in real-time with ease.", icon: "📦" },
+          ].map((f, i) => (
+            <div key={i} className="text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 opacity-80">{f.icon}</div>
+              <h3 className="font-bold text-xs tracking-widest mb-2 text-[#801B1B]">{f.label}</h3>
+              <p className="text-[11px] text-gray-500 leading-relaxed max-w-[180px]">{f.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Curated Menu Section */}
-      <section className="px-6 py-24 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
-          <div className="text-center md:text-left">
-            <span className="italic text-[#801B1B] font-serif text-2xl">Chef's Recommendations 🌿</span>
-            <h2 className="text-5xl font-black tracking-tighter mt-2 uppercase">The Signature Collection</h2>
+      {/* Product Section */}
+      <section className="max-w-7xl mx-auto px-8 py-20">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <span className="italic text-[#D4A373] font-serif text-xl">Our Best Sellers 🌿</span>
+            <h2 className="text-4xl font-serif font-bold text-[#801B1B] mt-1">Favorite Kakanin</h2>
           </div>
-          <button className="px-8 py-3 bg-white border-2 border-[#801B1B] text-[#801B1B] rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#801B1B] hover:text-white transition-all">
-            EXPLORE ALL MENU
-          </button>
+          <button className="text-xs font-bold border-b-2 border-[#801B1B] pb-1 uppercase tracking-widest">View All Menu</button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {products.map((item, index) => (
-            <div key={index} className="group relative bg-white rounded-[2.5rem] p-4 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4">
-              <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
-                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-[#801B1B]/10">
-                  <span className="text-[9px] font-black uppercase text-[#801B1B] tracking-widest">{item.tag}</span>
-                </div>
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125" 
-                />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          {products.map((item, i) => (
+            <div key={i} className="group">
+              <div className="rounded-2xl overflow-hidden mb-4 shadow-md bg-white p-2">
+                <img src={item.image} alt={item.name} className="w-full aspect-square object-cover rounded-xl" />
               </div>
-              <div className="text-center px-2 space-y-2">
-                <h4 className="font-black text-lg uppercase tracking-tight">{item.name}</h4>
-                <p className="text-[#801B1B] font-black text-xl mb-4 italic">{item.price}</p>
-                <button 
-                  onClick={() => navigate('/login')}
-                  className="w-full bg-[#331818] text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#801B1B] transition-all shadow-lg active:scale-95"
-                >
-                  ADD TO BASKET
+              <div className="text-center space-y-1">
+                <h4 className="font-bold text-sm text-[#4A1D1F]">{item.name}</h4>
+                <p className="text-[#801B1B] font-bold text-xs">{item.price}</p>
+                <button className="w-full mt-2 bg-[#801B1B] text-white py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#4A1D1F] transition-all">
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -155,43 +115,61 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer (Dark Mode) */}
-      <footer className="bg-[#1A1A1A] text-gray-400 py-24 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#801B1B] rounded-full flex items-center justify-center text-white font-bold">C</div>
-              <span className="text-white font-serif font-black text-xl uppercase tracking-tighter">Clara's Best</span>
-            </div>
-            <p className="text-sm leading-relaxed">The heart of SJDM's traditional rice cakes. Bringing families together through sweet, sticky delicacies.</p>
+      {/* About Section matching photo_6060131342525075399_y_2.jpg */}
+      <section className="bg-[#FAF7F2] py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16">
+          <div className="md:w-1/2 relative">
+             <div className="rounded-full overflow-hidden shadow-2xl border-8 border-white">
+                <img src="/about-plate.jpg" alt="About Plate" className="w-full" />
+             </div>
           </div>
-          
-          <div className="space-y-8">
-            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Hours</h5>
-            <div className="text-sm space-y-2">
-              <p>Mon — Sun</p>
-              <p className="text-[#801B1B] font-bold text-lg">08:00 AM — 08:00 PM</p>
-            </div>
+          <div className="md:w-1/2 space-y-6">
+            <span className="italic text-[#D4A373] font-serif text-xl">About Us</span>
+            <h2 className="text-4xl font-serif font-bold text-[#801B1B]">A Tradition Worth Sharing ♡</h2>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Clara's Best Kakanin Delicacies is dedicated to bringing you the rich and authentic flavors of Filipino kakanin. Each delicacy is carefully prepared using traditional recipes passed down through generations.
+            </p>
+            <button className="bg-[#801B1B] text-white px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-widest">
+              Learn More About Us
+            </button>
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-8">
-            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Reach Us</h5>
-            <div className="text-sm space-y-4">
-              <p className="flex items-center gap-3 italic">📍 SJDM, Bulacan</p>
-              <p className="flex items-center gap-3 font-bold text-white tracking-widest">📞 0923 456 7890</p>
+      {/* Footer matching photo_6060131342525075399_y_2.jpg */}
+      <footer className="bg-white border-t border-gray-100 py-12 px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-[#4A1D1F]">
+          <div className="flex gap-4">
+            <span className="text-2xl">🕒</span>
+            <div>
+              <h5 className="font-bold text-[11px] uppercase tracking-widest mb-2">Store Hours</h5>
+              <p className="text-[11px] text-gray-500">Mon - Sun<br/>8:00 AM - 8:00 PM</p>
             </div>
           </div>
-
-          <div className="space-y-8">
-            <h5 className="text-white font-black text-xs uppercase tracking-[0.3em]">Social</h5>
-            <div className="flex gap-6">
-              <button className="w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center hover:bg-[#801B1B] hover:border-[#801B1B] transition-all">FB</button>
-              <button className="w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center hover:bg-[#801B1B] hover:border-[#801B1B] transition-all">IG</button>
+          <div className="flex gap-4">
+            <span className="text-2xl">📍</span>
+            <div>
+              <h5 className="font-bold text-[11px] uppercase tracking-widest mb-2">Location</h5>
+              <p className="text-[11px] text-gray-500">Poblacion, City of<br/>San Jose del Monte, Bulacan</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-2xl">📞</span>
+            <div>
+              <h5 className="font-bold text-[11px] uppercase tracking-widest mb-2">Contact Us</h5>
+              <p className="text-[11px] text-gray-500">0923 456 7890<br/>clarasbest.kakanin@gmail.com</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-2xl text-blue-600">f</span>
+            <div>
+              <h5 className="font-bold text-[11px] uppercase tracking-widest mb-2">Follow Us</h5>
+              <p className="text-[11px] text-gray-500">Follow us on Facebook<br/>for updates and promos!</p>
             </div>
           </div>
         </div>
-        <div className="text-center mt-24 border-t border-white/5 pt-10 text-[10px] font-bold tracking-[0.4em] uppercase opacity-30">
-          © 2025 CLARA'S BEST KAKANIN — TRADITION BORN IN BULACAN
+        <div className="text-center mt-12 pt-8 border-t border-gray-50 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+          © 2025 Clara's Best Kakanin Delicacies. All Rights Reserved.
         </div>
       </footer>
     </div>
