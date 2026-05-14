@@ -120,7 +120,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 relative">
              <div className="rounded-full overflow-hidden shadow-2xl border-8 border-white">
-                <img src="/about-plate.jpg" alt="About Plate" className="w-full" />
+                <img src="https://thumbs.dreamstime.com/b/basket-philippine-rice-cakes-puto-filipino-steamed-rice-cakes-traditionally-made-slightly-fermented-rice-dough-194855057.jpg" alt="About Plate" className="w-full" />
              </div>
           </div>
           <div className="md:w-1/2 space-y-6">
