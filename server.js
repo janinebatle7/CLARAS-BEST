@@ -30,6 +30,7 @@ const PORT = process.env.PORT || 3000;
 // ───────────────────────────────────────────────────────────────
 app.use(express.json());
 
+// Updated CORS to include your specific production and local environments
 app.use(cors({
     origin: [
         'http://localhost:5173',
@@ -65,15 +66,14 @@ db.connect((err) => {
 // ───────────────────────────────────────────────────────────────
 // SERVE FRONTEND STATIC FILES
 // ───────────────────────────────────────────────────────────────
-// 1. Tell Express where your frontend "build" or "dist" folder is.
-// Change 'dist' to 'build' or 'public' if your folder has a different name.
+// This tells Express to look into the 'dist' folder (created by Vite)
+// for your compiled Home.tsx and other React files.
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // ───────────────────────────────────────────────────────────────
 // API ROUTES
 // ───────────────────────────────────────────────────────────────
 
-// Status API (Moved to /api/status so it doesn't block the website)
 app.get('/api/status', (req, res) => {
     res.json({
         message: "Clara's Best API is Live!",
@@ -161,10 +161,11 @@ app.get('/api/customer/orders', (req, res) => {
 });
 
 // ───────────────────────────────────────────────────────────────
-// FALLBACK ROUTE
+// FALLBACK ROUTE - CRITICAL FOR HOME.TSX FRONT
 // ───────────────────────────────────────────────────────────────
-// This MUST be the last route. It serves index.html for any 
-// URL that isn't an API route (essential for React/Vue routing).
+// This route ensures that if a user visits the root "/" or any 
+// sub-page, the server sends the React index.html file. 
+// React Router will then take over and show Home.tsx.
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
